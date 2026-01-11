@@ -10,23 +10,14 @@ const app = express();
 
 const port = process.env.PORT || 3000
 
-const withelist = [
-    'http://localhost:5173',
-    'https://frotend-sam.vercel.app'
-]
+// const withelist = [
+//     'http://localhost:5173',
+//     'https://frotend-sam.vercel.app'
+// ]
 
 app.use(cors({
-    origin: function (origin, callback){
-        if(!origin) return callback(null, true)
-        
-        if(withelist.includes(origin)){
-            callback(null, true)
-        }else{
-            console.log("Bloqueado por CORS: ", origin);
-            callback(new Error('Bloqueado por CORS'))
-            
-        }
-    }
+  origin: 'https://frotend-sam.vercel.app', // o tu dominio frontend
+  credentials: true
 }))
 app.use(express.json());
 
